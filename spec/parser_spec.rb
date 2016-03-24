@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+require 'spec_helper'
+
+describe RackHttpAcceptLanguage::Parser do
+  context 'without wildcard' do
+    let(:http_accept_language) { 'en-US,en-GB;q=0.6,en;q=0.8' }
+    subject(:parser) { described_class.new(http_accept_language) }
+
+    it 'preferred language' do
+      expected_array = 'en-US'
+      expect(parser.preferred_language).to eq expected_array
+    end
+
+    it 'prefrerred_languages' do
+      expected_array = ['en-US', 'en', 'en-GB']
+      expect(parser.preferred_languages).to eq expected_array
+    end
+  end
+end

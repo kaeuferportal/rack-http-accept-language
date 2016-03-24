@@ -1,0 +1,11 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
