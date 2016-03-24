@@ -6,11 +6,11 @@ module RackHttpAcceptLanguage
     end
 
     def preferred_language
-      order_languages_by_qvalue.values.first
+      preferred_languages.first
     end
 
     def preferred_languages
-      order_languages_by_qvalue.values
+      order_languages_by_qvalue.values.flatten
     end
 
     private
@@ -25,7 +25,11 @@ module RackHttpAcceptLanguage
           language, qvalue = language_with_qvalue.split(';q=')
           qvalue = qvalue ? qvalue.to_f : 1.0
 
-          memo[qvalue] = language
+          if memo[qvalue].nil?
+            memo[qvalue] = [language]
+          else
+            memo[qvalue] << language
+          end
         end.sort.reverse.to_h
     end
   end
