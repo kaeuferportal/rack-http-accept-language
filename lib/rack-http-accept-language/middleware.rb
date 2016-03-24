@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module RackHttpAcceptLanguage
   class Middleware
-    def initialize(app, i18n_default = false)
+    def initialize(app)
       @app = app
       @i18n_default = i18n_default
     end
@@ -19,13 +19,7 @@ module RackHttpAcceptLanguage
         self['RACK_HTTP_ACCEPT_LANGUAGE']
       end
 
-      set_i18n_default_value(parser.preferred_language) if @i18n_default
-
       @app.call(env)
-    end
-
-    def set_i18n_default_value(preferred_language)
-      I18n.locale = preferred_language
     end
   end
 end
