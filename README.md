@@ -4,17 +4,17 @@
 ## Possible Methods
 
 You have to messages on the env object:
-``
+```
 rack_http_accept_lanugage
-``
+```
 and
-``
+```
 rack_http_accept_lanugages
-``
+```
 
 ## How you can use it with Sinatra
 
-``
+```
 class App < Sinatra::Base
   use RackHttpAcceptLanguage::Middleware
 
@@ -22,7 +22,7 @@ class App < Sinatra::Base
     I18n.locale = request.env.rack_http_accept_language
   end
 end
-``
+```
 
 
 ## Installation
