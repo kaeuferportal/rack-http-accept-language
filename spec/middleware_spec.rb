@@ -22,7 +22,7 @@ describe 'Rack integration' do
   context 'http_accept_language' do
     it 'handle one http_accept_language' do
       env = { 'HTTP_ACCEPT_LANGUAGE' => 'en' }
-      app = ->(env) { env }
+      app = ->(env_data) { env_data }
       middleware = RackHttpAcceptLanguage::Middleware.new(app)
       middleware.call(env)
       expect(env.rack_http_accept_language).to eq 'en'
@@ -33,7 +33,7 @@ describe 'Rack integration' do
 
     it 'handle more http_accept_languages' do
       env = { 'HTTP_ACCEPT_LANGUAGE' => 'en-US,en-GB;q=0.8,en;q=0.6' }
-      app = ->(env) { env }
+      app = ->(env_data) { env_data }
       middleware = RackHttpAcceptLanguage::Middleware.new(app)
       middleware.call(env)
       expect(env.rack_http_accept_language).to eq 'en-US'
@@ -43,7 +43,7 @@ describe 'Rack integration' do
   context 'http_accept_languages' do
     it 'handle one http_accept_language' do
       env = { 'HTTP_ACCEPT_LANGUAGE' => 'en' }
-      app = ->(env) { env }
+      app = ->(env_data) { env_data }
       middleware = RackHttpAcceptLanguage::Middleware.new(app)
       middleware.call(env)
       expect(env.rack_http_accept_languages).to eq %w(en)
@@ -54,7 +54,7 @@ describe 'Rack integration' do
 
     it 'handle more http_accept_languages' do
       env = { 'HTTP_ACCEPT_LANGUAGE' => 'en-US,en-GB;q=0.5,en;q=0.7' }
-      app = ->(env) { env }
+      app = ->(env_data) { env_data }
       middleware = RackHttpAcceptLanguage::Middleware.new(app)
       middleware.call(env)
       expect(env.rack_http_accept_languages).to eq %w(en-US en en-GB)

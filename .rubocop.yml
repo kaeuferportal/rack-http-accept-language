@@ -4,6 +4,9 @@ AllCops:
 Documentation:
   Enabled: false
 
+Style/FileName:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
 
