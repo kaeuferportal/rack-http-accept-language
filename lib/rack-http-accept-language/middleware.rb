@@ -7,15 +7,15 @@ module RackHttpAcceptLanguage
 
     def call(env)
       parser = Parser.new(env['HTTP_ACCEPT_LANGUAGE'])
-      env['http_accept_language'] = parser.preferred_language
-      env['http_accept_languages'] = parser.preferred_languages
+      env['RACK_HTTP_ACCEPT_LANGUAGE'] = parser.preferred_language
+      env['RACK_HTTP_ACCEPT_LANGUAGES'] = parser.preferred_languages
 
-      def env.http_accept_languages
-        self['http_accept_languages']
+      def env.rack_http_accept_languages
+        self['RACK_HTTP_ACCEPT_LANGUAGES']
       end
 
-      def env.http_accept_language
-        self['http_accept_language']
+      def env.rack_http_accept_language
+        self['RACK_HTTP_ACCEPT_LANGUAGE']
       end
 
       @app.call(env)
