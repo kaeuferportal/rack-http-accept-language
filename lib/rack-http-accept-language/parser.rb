@@ -4,7 +4,7 @@ module RackHttpAcceptLanguage
     attr_reader :http_accept_language
 
     def initialize(http_accept_language)
-      @http_accept_language = http_accept_language
+      @http_accept_language = http_accept_language.to_s
     end
 
     def preferred_language
