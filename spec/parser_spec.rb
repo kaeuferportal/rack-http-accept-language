@@ -12,7 +12,7 @@ describe RackHttpAcceptLanguage::Parser do
         expect(parser.preferred_language).to eq expected_array
       end
 
-      it 'prefrerred_languages' do
+      it 'preferred_languages' do
         expected_array = ['en-US', 'en', 'en-GB']
         expect(parser.preferred_languages).to eq expected_array
       end
@@ -27,7 +27,7 @@ describe RackHttpAcceptLanguage::Parser do
         expect(parser.preferred_language).to eq expected_array
       end
 
-      it 'prefrerred_languages' do
+      it 'preferred_languages' do
         expected_array = ['en-US', 'en', 'en-GB']
         expect(parser.preferred_languages).to eq expected_array
       end
@@ -35,25 +35,50 @@ describe RackHttpAcceptLanguage::Parser do
   end
 
   context 'with wildcard' do
-    it 'has no http_accept_language' do
-      http_accept_language = nil
-      parser = described_class.new(http_accept_language)
+    describe '.preferred_language' do
+      it 'has no http_accept_language' do
+        http_accept_language = nil
+        parser = described_class.new(http_accept_language)
 
-      expect(parser.preferred_language).to eq nil
+        expect(parser.preferred_language).to eq nil
+      end
+
+      it 'has a * as http_accept_language' do
+        http_accept_language = '*'
+        parser = described_class.new(http_accept_language)
+
+        expect(parser.preferred_language).to eq nil
+      end
+
+      it 'has a * in http_accept_language' do
+        http_accept_language = '*,en;q=0.6'
+        parser = described_class.new(http_accept_language)
+
+        expect(parser.preferred_language).to eq 'en'
+      end
     end
 
-    it 'has a * as http_accept_language' do
-      http_accept_language = '*'
-      parser = described_class.new(http_accept_language)
+    describe '.preferred_languages' do
+      it 'has no http_accept_languages' do
+        http_accept_language = nil
+        parser = described_class.new(http_accept_language)
 
-      expect(parser.preferred_language).to eq nil
-    end
+        expect(parser.preferred_languages).to eq nil
+      end
 
-    it 'has a * in http_accept_language' do
-      http_accept_language = '*,en;q=0.6'
-      parser = described_class.new(http_accept_language)
+      it 'has a * as http_accept_languages' do
+        http_accept_language = '*'
+        parser = described_class.new(http_accept_language)
 
-      expect(parser.preferred_language).to eq 'en'
+        expect(parser.preferred_languages).to eq nil
+      end
+
+      it 'has a * in http_accept_languages' do
+        http_accept_language = '*,en;q=0.6'
+        parser = described_class.new(http_accept_language)
+
+        expect(parser.preferred_languages).to eq %w(en)
+      end
     end
   end
 end

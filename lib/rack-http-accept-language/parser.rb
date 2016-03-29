@@ -4,27 +4,31 @@ module RackHttpAcceptLanguage
     attr_reader :http_accept_language
 
     def initialize(http_accept_language)
-      @http_accept_language = http_accept_language.to_s
+      @http_accept_language = http_accept_language
     end
 
     def preferred_language
-      return nil if http_accept_language.nil?
+      return nil if early_return?
       order_languages_by_qvalue.first
     end
 
     def preferred_languages
-      return nil if http_accept_language.nil?
+      return nil if early_return?
       order_languages_by_qvalue
     end
 
     private
+
+    def early_return?
+      http_accept_language.nil? || http_accept_language == '*'
+    end
 
     def order_languages_by_qvalue
       order_languages_by_qvalue_hash.values.flatten
     end
 
     def split_languages
-      @split_languages ||= http_accept_language.split(',')
+      @split_languages ||= http_accept_language.to_s.split(',')
     end
 
     def order_languages_by_qvalue_hash
