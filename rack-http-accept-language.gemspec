@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   if s.respond_to? :required_rubygems_version=
     s.required_rubygems_version = Gem::Requirement.new('>= 1.2')
   end
-  s.required_ruby_version = '>= 2.3.0'
+  s.required_ruby_version = '>= 2.1.0'
   s.author = 'Bennet Palluthe'
-  s.email = 'palluthe.bennet@gmail.com'
+  s.email = 'bennet.palluthe@kaeuferportal.de'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.rubygems_version = '2.6.2'
   s.summary = 'http accept language handler'
   s.description = 'http accept language handler'
-  s.homepage = 'https://github.com/Garllon/sinatra-http-accept-language/blob/master/README.md'
+  s.homepage = 'https://github.com/kaeuferportal/rack-http-accept-language'
 end
