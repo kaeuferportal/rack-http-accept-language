@@ -3,7 +3,7 @@
 
 ## Possible Methods
 
-You have to messages on the env object:
+You have to methods on the ``env`` object:
 ```
 rack_http_accept_lanugage
 ```
