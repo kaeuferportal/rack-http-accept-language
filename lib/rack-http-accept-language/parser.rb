@@ -37,15 +37,19 @@ module RackHttpAcceptLanguage
           language, qvalue = language_with_qvalue.split(';q=')
           next if language == '*'
 
-          language = language.downcase.gsub(/-[a-z0-9]+$/i, &:upcase)
-          qvalue = qvalue ? qvalue.to_f : 1.0
-
-          if memo[qvalue].nil?
-            memo[qvalue] = [language]
-          else
-            memo[qvalue] << language
-          end
+          handle_language(language, qvalue, memo)
         end.sort.reverse.to_h
+    end
+
+    def handle_language(language, qvalue, memo)
+      language = language.downcase.gsub(/-[a-z0-9]+$/i, &:upcase)
+      qvalue = qvalue ? qvalue.to_f : 1.0
+
+      if memo[qvalue].nil?
+        memo[qvalue] = [language]
+      else
+        memo[qvalue] << language
+      end
     end
   end
 end
