@@ -1,5 +1,6 @@
 # RackHttpAcceptLanguage
 [![Build Status](https://travis-ci.org/kaeuferportal/rack-http-accept-language.svg?branch=master)](https://travis-ci.org/kaeuferportal/rack-http-accept-language)
+[![Gem Version](https://badge.fury.io/rb/rack-http-accept-language.svg)](https://badge.fury.io/rb/rack-http-accept-language)
 
 ## Possible Methods
 
