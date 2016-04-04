@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry', '~> 0.10.3'
   s.add_development_dependency 'rack-test', '~> 0.6.3'
   s.add_development_dependency 'rubocop', '~> 0.38.0'
+  s.add_development_dependency 'i18n', '~> 0.7.0'
 
   s.rubygems_version = '2.6.2'
   s.summary = 'http accept language handler'
