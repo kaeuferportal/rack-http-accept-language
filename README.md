@@ -15,7 +15,7 @@ rack_http_accept_lanugages
 
 ## How you can use it with Sinatra
 
-```
+``` ruby
 class App < Sinatra::Base
   use RackHttpAcceptLanguage::Middleware
 
@@ -25,6 +25,12 @@ class App < Sinatra::Base
 end
 ```
 
+## How you use it with Rails
+
+Add the following line to your ``application.rb``
+``` ruby
+config.middleware.use RackHttpAcceptLanguage::Middleware
+```
 
 ## Installation
 
