@@ -41,3 +41,7 @@ gem 'rack-http-accept-language'
 ```
 
 Run `bundle install` to install it.
+
+## License
+
+RackHttpAcceptLanguage is released under the MIT License.

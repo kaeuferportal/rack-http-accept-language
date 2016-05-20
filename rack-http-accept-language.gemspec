@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.summary = 'http accept language handler'
   s.description = 'http accept language handler'
   s.homepage = 'https://github.com/kaeuferportal/rack-http-accept-language'
+  s.license = 'MIT'
 end
