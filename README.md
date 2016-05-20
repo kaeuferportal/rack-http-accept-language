@@ -44,4 +44,4 @@ Run `bundle install` to install it.
 
 ## License
 
-RackHttpAcceptLanguage is released under the MIT License.
+RackHttpAcceptLanguage is released under the [MIT License](http://www.opensource.org/licenses/MIT).
