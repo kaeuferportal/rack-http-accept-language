@@ -42,7 +42,7 @@ module RackHttpAcceptLanguage
     end
 
     def handle_language(language, qvalue, memo)
-      language = language.downcase.gsub(/-[a-z0-9]+$/i, &:upcase)
+      language = language.strip.downcase.gsub(/-[a-z0-9]+$/i, &:upcase)
       qvalue = qvalue ? qvalue.to_f : 1.0
 
       if memo[qvalue].nil?
