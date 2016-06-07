@@ -3,9 +3,10 @@ require 'spec_helper'
 
 describe RackHttpAcceptLanguage::Parser do
   context 'without wildcard' do
+    subject(:parser) { described_class.new(http_accept_language) }
+
     context 'no upcase handling necessary' do
       let(:http_accept_language) { 'en-US,en-GB;q=0.6,en;q=0.8' }
-      subject(:parser) { described_class.new(http_accept_language) }
 
       it 'preferred language' do
         expected_array = 'en-US'
@@ -20,7 +21,6 @@ describe RackHttpAcceptLanguage::Parser do
 
     context 'upcase necessary' do
       let(:http_accept_language) { 'en-us,en-GB;q=0.6,en;q=0.8' }
-      subject(:parser) { described_class.new(http_accept_language) }
 
       it 'preferred language' do
         expected_array = 'en-US'
@@ -28,6 +28,15 @@ describe RackHttpAcceptLanguage::Parser do
       end
 
       it 'preferred_languages' do
+        expected_array = ['en-US', 'en', 'en-GB']
+        expect(parser.preferred_languages).to eq expected_array
+      end
+    end
+
+    context 'with spaces' do
+      let(:http_accept_language) { 'en-US, en-GB;q=0.6, en;q=0.8' }
+
+      it 'strips unneccessary spaces' do
         expected_array = ['en-US', 'en', 'en-GB']
         expect(parser.preferred_languages).to eq expected_array
       end
