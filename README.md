@@ -6,11 +6,11 @@
 
 You have two methods on the ``env`` object:
 ```
-rack_http_accept_lanugage
+rack_http_accept_language
 ```
 and
 ```
-rack_http_accept_lanugages
+rack_http_accept_languages
 ```
 
 ## How you can use it with Sinatra
